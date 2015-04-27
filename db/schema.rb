@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150427190120) do
 
   # These are extensions that must be enabled in order to support this database
@@ -36,5 +37,18 @@ ActiveRecord::Schema.define(version: 20150427190120) do
 
   add_index "donors", ["email"], name: "index_donors_on_email", unique: true, using: :btree
   add_index "donors", ["reset_password_token"], name: "index_donors_on_reset_password_token", unique: true, using: :btree
+
+  create_table "requested_resources", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "quantity"
+    t.string   "urgency"
+    t.boolean  "fulfilled",      default: false
+    t.integer  "beneficiary_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "requested_resources", ["beneficiary_id"], name: "index_requested_resources_on_beneficiary_id", using: :btree
+
 
 end

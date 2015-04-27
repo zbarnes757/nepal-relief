@@ -1,0 +1,44 @@
+
+<h1>Your Resources</h1>
+
+<%= form_for :beneficiary_requested_resource do |f| %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br />
+
+  <%= f.label :quantity %><br />
+  <%= f.text_field :quantity %><br />
+
+  <%= f.label :urgency %><br />
+  <%= f.text_field :urgency %><br />
+  <%= f.submit  :submit, :class => "btn" %>
+
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>Item Name</th>
+    <th>Item Quantity</th>
+    <th>Urgency</th>
+    <th>fulfilled</th>
+  </tr>
+  <% current_beneficiary.requested_resources.each do |resource| %>
+    <tr>
+      <td>
+        <%= resource.name %>
+      </td>
+
+      <td>
+        <%= resource.quantity %>
+      </td>
+
+      <td>
+        <%= resource.urgency %>
+      </td>
+
+      <td>
+        <%= resource.fulfilled %>
+      </td>
+    </tr>
+
+  <% end %>
+</table>

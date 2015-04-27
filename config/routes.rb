@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
 
   devise_for :beneficiaries
+
+  resources :beneficiaries do
+    resource :requested_resource
+  end
+
   devise_for :donors
 
 

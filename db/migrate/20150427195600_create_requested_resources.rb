@@ -4,7 +4,7 @@ class CreateRequestedResources < ActiveRecord::Migration
       t.string :name
       t.integer :quantity
       t.string :urgency
-      t.boolean :fulfilled
+      t.boolean :fulfilled, default: false
       t.belongs_to :beneficiary, index: true
 
       t.timestamps null: false

@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20150427195600) do
     t.string   "name"
     t.integer  "quantity"
     t.string   "urgency"
-    t.boolean  "fulfilled"
+    t.boolean  "fulfilled",      default: false
     t.integer  "beneficiary_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "requested_resources", ["beneficiary_id"], name: "index_requested_resources_on_beneficiary_id", using: :btree

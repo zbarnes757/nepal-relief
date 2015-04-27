@@ -1,34 +1,21 @@
-<nav class="navbar  navbar-fixed-top" >
-    <div class="container-fluid" style="background-color: rgba(255,255,255,.8)">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <div class="navbar-brand">Vulcun</div>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-
-                <li>
-                    <form class="navbar-search" action="/login" method="POST">
-                        <input type="text" name="username" placeholder="username" required/>
-                        <input type="password" name="password" placeholder="password" required/>
-                        <button type="submit" class="btn btn-default navbar-btn">Log in</button>
-                    </form>
-                </li>
-                <li class="dropdown">
-                    <a style="color:red" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Register <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <form class="navbar-search" action="/users" method="POST">
-                                <input for="username" class="form-control" type="text" placeholder="username" name="username" required/>
-                                <input class="form-control" type="password" name="password" placeholder="password" required/>
-                                <button type="submit" class="btn btn-default navbar-btn">Sign up</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+<nav id ="topnav" class = "navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id ="navbar-padding-override" class="collapse navbar-collapse">
+        <ul id ="nav-items" class="nav navbar-nav">
+          <li class="nav_li"><%= link_to "University Crime Watch", root_path %></li>
+          <li>
+            <a href="#" id ="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">View Crime Graphs <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu"></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>

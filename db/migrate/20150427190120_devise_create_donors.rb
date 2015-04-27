@@ -39,7 +39,7 @@ class DeviseCreateDonors < ActiveRecord::Migration
 
     add_index :donors, :email,                unique: true
     add_index :donors, :reset_password_token, unique: true
-    add_index :name, :phone, :country
+    # add_index :name, :phone, :country
     # add_index :donors, :confirmation_token,   unique: true
     # add_index :donors, :unlock_token,         unique: true
   end

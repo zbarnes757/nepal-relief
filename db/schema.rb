@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150427190120) do
+ActiveRecord::Schema.define(version: 20150427195600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +48,5 @@ ActiveRecord::Schema.define(version: 20150427190120) do
   end
 
   add_index "requested_resources", ["beneficiary_id"], name: "index_requested_resources_on_beneficiary_id", using: :btree
-
 
 end

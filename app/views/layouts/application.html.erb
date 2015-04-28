@@ -64,7 +64,7 @@
             <li><%= link_to('Logout', destroy_donor_session_path) %></li>
         <% elsif beneficiary_signed_in? %>
             <li><%= link_to('Profile', root_path) %></li>
-            <li><%= link_to('Logout', destroy_benficiary_session_path) %></li>
+            <li><%= link_to('Logout', destroy_beneficiary_session_path) %></li>
         <% end %>
 
         <% unless donor_signed_in? || beneficiary_signed_in? %>
@@ -82,8 +82,15 @@
   </div>
 </nav>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if flash[:notice] %>
+    <p class="alert alert-success alert-dismissible" role="alert"><%= notice %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </p>
+  <% elsif flash[:alert] %>
+    <p class="alert alert-danger alert-dismissible" role="alert"><%= alert %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </p>
+  <% end %>
 
   <%= yield %>
 </div>

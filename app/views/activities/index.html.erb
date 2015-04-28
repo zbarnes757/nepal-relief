@@ -1,0 +1,21 @@
+<h1>News Feed</h1>
+
+<table>
+  <tr>
+    <th>Requested Resource</th>
+    <th>Quantity</th>
+    <th>Urgency</th>
+    <th>FullFilled</th>
+  </tr>
+
+  <% @activities.each do |activity| %>
+  <%= activity.inspect %>
+    <tr>
+    <%= link_to activity.owner.name, activity.owner if activity.owner %>
+      <td><%= activity.trackable.name %></td>
+      <td><%= activity.trackable.quantity %></td>
+      <td><%= activity.trackable.urgency %></td>
+      <td><%= activity.trackable.fulfilled %></td>
+    </tr>
+  <% end %>
+</table>

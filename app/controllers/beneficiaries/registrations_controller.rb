@@ -10,8 +10,11 @@ class Beneficiaries::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    address = resource.address
-    
+    address = resource.address.gsub(" ", "+")
+    response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{ENV['GEOCODE_KEY']}")
+    body = JSON.parse(response.body)
+    coordinates = body["results"][0]["geometry"]["location"]
+    resource.update_attributes(longitude: coordinates["lng"], latitude: coordinates["lat"], password: sign_up_params["password"])
   end
 
   # GET /resource/edit

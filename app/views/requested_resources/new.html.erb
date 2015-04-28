@@ -1,8 +1,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-2 col-md-2"></div>
-    <div class="col-lg-8 col-md-8">
+    <!-- <div class="col-lg-2 col-md-2"></div> -->
+    <div class="col-lg-12 col-md-12">
       <h1>Your Resources</h1>
 
 
@@ -14,19 +14,19 @@
           <th>fulfilled</th>
         </tr>
         <% current_beneficiary.requested_resources.each do |resource| %>
-          <tr>
+          <tr id="<%= resource.id %>">
             <td><%= resource.name %></td>
             <td><%= resource.quantity %></td>
             <td><%= resource.urgency %></td>
             <td><%= resource.fulfilled %></td>
             <td><a href="#">Edit</a></td>
-            <td><a href="#">Delete</a></td>
+            <td><%= link_to "Delete", {action: :destroy, controller: :requested_resources, id: resource.id }, method: :delete %></td>
 
           </tr>
 
         <% end %>
         <tr>
-          <%= form_for :beneficiary_requested_resource do |f| %>
+          <%= form_for @resource, url: { action: "create" } do |f| %>
             <td><%= f.text_field :name, :placeholder => "Item Name" %></td>
             <td><%= f.text_field :quantity, :placeholder => "Quantity" %></td>
             <td><%= f.text_field :urgency, :placeholder => "Urgency" %></td>

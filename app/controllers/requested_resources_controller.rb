@@ -3,6 +3,13 @@ class RequestedResourcesController < ApplicationController
   end
 
   def new
+    @resource = RequestedResource.new()
+  end
+
+  def destroy
+    p params
+    RequestedResource.find(params[:id]).destroy
+    redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
   end
 
   def create
@@ -14,10 +21,10 @@ class RequestedResourcesController < ApplicationController
     if resource.save
       current_beneficiary.requested_resources << resource
       p "saved"
-      redirect_to action: "show", id: current_beneficiary.id
+      redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     else
       p "didn't save"
-      redirect_to action: "show", id: current_beneficiary.id
+      redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     end
   end
 
@@ -25,7 +32,7 @@ class RequestedResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:beneficiary_requested_resource).permit(:name, :quantity, :urgency)
+    params.require(:requested_resource).permit(:name, :quantity, :urgency)
   end
 
 

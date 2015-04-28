@@ -64,7 +64,7 @@
             <li><%= link_to('Logout', destroy_donor_session_path) %></li>
         <% elsif beneficiary_signed_in? %>
             <li><%= link_to('Profile', root_path) %></li>
-            <li><%= link_to('Logout', destroy_benficiary_session_path) %></li>
+            <li><%= link_to('Logout', destroy_beneficiary_session_path) %></li>
         <% end %>
 
         <% unless donor_signed_in? || beneficiary_signed_in? %>

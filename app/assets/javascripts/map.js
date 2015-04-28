@@ -6,6 +6,17 @@
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
     myLayer.setGeoJSON(geoData);
+    
+    // L.mapbox.featureLayer().addTo(map).setGeoJSON(geoData).on('ready', function(e) {
+    //     var clusterGroup = new L.MarkerClusterGroup();
+    //     e.target.eachLayer(function(layer) {
+    //         clusterGroup.addLayer(layer);
+    //     });
+    //     map.addLayer(clusterGroup);
+    // });
+
+    // map.scrollWheelZoom.disable();
+
   };
 
 

@@ -12,18 +12,26 @@ class RequestedResourcesController < ApplicationController
     redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
   end
 
-  def create
-    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    p params
-    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+  def update
 
+    resource = RequestedResource.find(params[:beneficiary_id])
+    resource.update_attributes(
+      name: params[:name],
+      quantity: params[:quantity],
+      urgency: params[:urgency]
+
+      )
+
+    render json: resource
+
+  end
+
+  def create
     resource = RequestedResource.new(resource_params)
     if resource.save
       current_beneficiary.requested_resources << resource
-      p "saved"
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     else
-      p "didn't save"
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     end
   end

@@ -1,0 +1,2 @@
+class RequestedResourcesController < ApplicationController
+end

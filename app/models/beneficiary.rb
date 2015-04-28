@@ -6,4 +6,7 @@ class Beneficiary < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :name, :address, :contact_name, :contact_number, presence: true
+  validates :name, uniqueness: true
+  has_many :requested_resources
 end

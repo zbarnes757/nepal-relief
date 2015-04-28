@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-md-2"></div>
+    <div class="col-lg-8 col-md-8">
+      <h1>Your Resources</h1>
+
+
+      <table class="table">
+        <tr>
+          <th>Item Name</th>
+          <th>Item Quantity</th>
+          <th>Urgency</th>
+          <th>fulfilled</th>
+        </tr>
+        <% current_beneficiary.requested_resources.each do |resource| %>
+          <tr>
+            <td><%= resource.name %></td>
+            <td><%= resource.quantity %></td>
+            <td><%= resource.urgency %></td>
+            <td><%= resource.fulfilled %></td>
+            <td><a href="#">Edit</a></td>
+            <td><a href="#">Delete</a></td>
+
+          </tr>
+
+        <% end %>
+        <tr>
+          <%= form_for :beneficiary_requested_resource do |f| %>
+            <td><%= f.text_field :name, :placeholder => "Item Name" %></td>
+            <td><%= f.text_field :quantity, :placeholder => "Quantity" %></td>
+            <td><%= f.text_field :urgency, :placeholder => "Urgency" %></td>
+            <td></td>
+            <td></td>
+            <td><%= f.submit  :+, :class => "btn" %></td>
+          <% end %>
+
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

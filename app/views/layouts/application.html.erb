@@ -32,7 +32,8 @@
           </li>
           <% if beneficiary_signed_in? %>
             <li class="nav_li">
-              <%= link_to "Requested Resources", root_path %>
+
+              <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
             </li>
           <% end %>
         </ul>

@@ -2,6 +2,9 @@ class RequestedResourcesController < ApplicationController
   def show
   end
 
+  def new
+  end
+
   def create
     p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     p params

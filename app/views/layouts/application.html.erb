@@ -44,6 +44,12 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+        <% if beneficiary_signed_in? %>
+          <li class="nav_li">
+
+            <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
+          </li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -60,9 +66,11 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if donor_signed_in? %>
+            <li><%= link_to("Signed in as #{current_donor.name}", root_path) %></li>
             <li><%= link_to('Profile', root_path) %></li>
             <li><%= link_to('Logout', destroy_donor_session_path) %></li>
         <% elsif beneficiary_signed_in? %>
+            <li><%= link_to("Signed in as #{current_beneficiary.name}", root_path) %></li>
             <li><%= link_to('Profile', root_path) %></li>
             <li><%= link_to('Logout', destroy_beneficiary_session_path) %></li>
         <% end %>

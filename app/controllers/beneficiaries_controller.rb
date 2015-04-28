@@ -7,4 +7,8 @@ class BeneficiariesController < ApplicationController
     end
 	end
 
+	def show
+		@beneficiary = Beneficiary.find(params[:id])
+	end
+
 end

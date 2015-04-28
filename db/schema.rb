@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20150428194720) do
   add_index "beneficiaries", ["email"], name: "index_beneficiaries_on_email", unique: true, using: :btree
   add_index "beneficiaries", ["reset_password_token"], name: "index_beneficiaries_on_reset_password_token", unique: true, using: :btree
 
+  create_table "claimed_resources", force: :cascade do |t|
+    t.integer  "requested_resource_id"
+    t.integer  "donor_id"
+    t.integer  "quantity"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "claimed_resources", ["donor_id"], name: "index_claimed_resources_on_donor_id", using: :btree
+  add_index "claimed_resources", ["requested_resource_id"], name: "index_claimed_resources_on_requested_resource_id", using: :btree
+
   create_table "donors", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false

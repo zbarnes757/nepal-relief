@@ -5,4 +5,8 @@ class BeneficiariesController < ApplicationController
 		render json: @beneficiaries
 	end
 
+	def show
+		@beneficiary = Beneficiary.find(params[:id])
+	end
+
 end

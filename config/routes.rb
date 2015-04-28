@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   devise_for :beneficiaries, controllers: { registrations: 'beneficiaries/registrations'}
   devise_for :donors
 
-  get 'beneficiaries' => 'beneficiaries#index'
-
+  resources :beneficiaries, only: ['index','show']
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

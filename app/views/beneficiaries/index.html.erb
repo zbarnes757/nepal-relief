@@ -1,5 +1,22 @@
+<div class="search-bar">
+  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  <input type="text" placeholder="Find an Organization">
+</div>
+
+<form action="" method="">
+  <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+  <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+  <input type="submit" value="Submit">
+</form>
+
 <table>
   <tbody>
+    <tr class="table-head">
+      <td>Name</td>
+      <td># of Requested Resources</td>
+      <td># of Donors</td>
+      <td>Contact Information</td>
+    </tr>
     <% @beneficiaries.each do |beneficiary| %>
       <tr>
         <td>
@@ -7,6 +24,9 @@
         </td>
         <td>
           <%= beneficiary.requested_resources.count %>
+        </td>
+        <td>
+          <%= beneficiary.count_donors %>
         </td>
         <td>
           <%= link_to("Contact", beneficiary) %>

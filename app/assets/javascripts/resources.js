@@ -16,11 +16,15 @@ $(document).ready(function(){
     var deleteButton = currentRow.find(".resource-delete").html();
 
 
-    [name, quantity, urgency].forEach(function(resourceInfo){
-      var text = resourceInfo.text();
-      resourceInfo.html("<input type='text'>")
-      resourceInfo.children().first().val(text)
-    })
+    var text = name.text();
+    name.html("<input type='text'>")
+    name.children().first().val(text)
+
+    text = quantity.text()
+    quantity.html("<input type='number'/>")
+    quantity.find("input").val(text)
+
+    urgency.html("<select><option value='Low'>Low</option><option value='Medium'>Medium</option><option value='high'>High</option></select>")
 
     currentRow.find(".resource-edit").html("");
     currentRow.find(".resource-delete").html("<a href='#' class='done'>Done</a>")

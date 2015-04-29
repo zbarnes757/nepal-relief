@@ -28,8 +28,10 @@
         <tr>
           <%= form_for @resource, url: { action: "create" } do |f| %>
             <td><%= f.text_field :name, :placeholder => "Item Name" %></td>
-            <td><%= f.text_field :quantity, :placeholder => "Quantity" %></td>
-            <td><%= f.text_field :urgency, :placeholder => "Urgency" %></td>
+            <td><%= f.number_field :quantity, :placeholder => "Quantity" %></td>
+            <td>
+              <%= f.select :urgency, [["Low", "Low"], ["Medium", "Medium"],["High","High"]] %>
+            </td>
             <td></td>
             <td></td>
             <td><%= f.submit  :+, :class => "btn" %></td>

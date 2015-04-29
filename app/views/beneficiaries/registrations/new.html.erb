@@ -7,8 +7,33 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "form-control", autofocus: true %>
+    <%= f.label :contact_name %><br />
+    <%= f.text_field :contact_name, class: "form-control", :placeholder => "Janet Johnson" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number, class: "form-control", :placeholder => "4228094" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_email %><br />
+    <%= f.email_field :email, class: "form-control", autofocus: true, :placeholder => "me@email.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :organization_name %><br />
+    <%= f.text_field :name, class: "form-control", :placeholder => "HIMALAYAN RESCUE ASSOCIATION NEPA" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, class: "form-control", :placeholder => "Dhobichaur, Lazimpat (North Gate of the Royal Palace)" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, class: "form-control", :placeholder => "What do you do? What do you need?" %><br />
   </div>
 
   <div class="field">
@@ -16,39 +41,14 @@
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control", autocomplete: "off",:placeholder => "password" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", :placeholder => "password confirmation" %><br />
   </div>
 
-  <div class="field">
-    <%= f.label :organization_name %><br />
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, class: "form-control" %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :contact_name %><br />
-    <%= f.text_field :contact_name, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact_number %><br />
-    <%= f.text_field :contact_number, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, class: "form-control" %><br />
-  </div>
 
 
   <div class="actions">

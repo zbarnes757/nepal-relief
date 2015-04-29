@@ -1,0 +1,8 @@
+<h3>Your Info</h3>
+<p>Name: <%= @donor.name %></p>
+<p>Email: <%= @donor.email %></p>
+<p>Phone: <%= @donor.phone %></p>
+<p>Country: <%= @donor.country %></p>
+
+<%= link_to 'Edit Profile', edit_donor_registration_path(@donor), class: 'btn btn-primary' %>
+

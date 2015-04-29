@@ -2,7 +2,7 @@
 
 <div class="search-bar">
   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  <input type="text" placeholder="Find a Beneficiary">
+  <input class="beni-search-text" type="text" placeholder="Find a Beneficiary">
 </div>
 
 <h4>Search By</h4>
@@ -24,7 +24,7 @@
         </tr>
         <% @beneficiaries.each do |beneficiary| %>
           <tr>
-            <td><%= beneficiary.name %></td>
+            <td class="beni-name"><%= beneficiary.name %></td>
             <td><%= beneficiary.requested_resources.count %></td>
             <td><%= beneficiary.count_donors %> </td>
             <td> <%= link_to("Contact", beneficiary) %> </td>

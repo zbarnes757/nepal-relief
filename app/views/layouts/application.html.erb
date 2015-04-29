@@ -16,89 +16,10 @@
 <body>
 
 <div class="container">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Home</a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li>
-        <li><%= link_to('See All', beneficiaries_path) %></li></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-        <% if beneficiary_signed_in? %>
-          <li class="nav_li">
+  <%= render 'layouts/nav' %>
 
-            <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
-          </li>
-        <% end %>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% unless donor_signed_in? || beneficiary_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign in <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a  href="/donors/sign_in">As a Donor</a></li>
-              <li><a id="organization_modal_trigger" href="/beneficiaries/sign_in">As a Beneficiary</a></li>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if donor_signed_in? %>
-            <li><%= link_to("Signed in as #{current_donor.name}", root_path) %></li>
-            <li><%= link_to('Profile', root_path) %></li>
-            <li><%= link_to('Logout', destroy_donor_session_path) %></li>
-        <% elsif beneficiary_signed_in? %>
-            <li><%= link_to("Signed in as #{current_beneficiary.name}", root_path) %></li>
-            <li><%= link_to('Profile', root_path) %></li>
-            <li><%= link_to('Logout', destroy_beneficiary_session_path) %></li>
-        <% end %>
-
-        <% unless donor_signed_in? || beneficiary_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign up <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/donors/sign_up">As a Donor</a></li>
-              <li><a href="/beneficiaries/sign_up">As a Beneficiary</a></li>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
-
-    </div>
-  </div>
-</nav>
-
-  <% if flash[:notice] %>
-    <p class="alert alert-success alert-dismissible" role="alert"><%= notice %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </p>
-  <% elsif flash[:alert] %>
-    <p class="alert alert-danger alert-dismissible" role="alert"><%= alert %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </p>
-  <% end %>
+  <%= render 'layouts/alerts' %>
 
   <%= yield %>
 </div>

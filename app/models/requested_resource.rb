@@ -1,4 +1,11 @@
 class RequestedResource < ActiveRecord::Base
+
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_beneficiary }
+
+  # creates call backs for activity record
+
+
   has_many :claimed_resources
 	belongs_to :beneficiary
 	validates :name, :quantity, :urgency, presence: true

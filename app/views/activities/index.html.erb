@@ -1,10 +1,13 @@
-<div class="container">
+
 <h1>News Feed</h1>
 
-<% @activities.each do |activity| %>
 <div class="activity">
+<% @activities.each_with_index do |activity, index| %>
+
+<% next if %>
+<% index%2 != 0%>
     <p><%= link_to activity.owner.name, activity.owner if activity.owner %> just requested <%= activity.trackable.name %></p>
     <p><em>Posted <%= time_calc(activity.created_at.to_s)%></em></p>
-</div>
 <% end %>
 </div>
+

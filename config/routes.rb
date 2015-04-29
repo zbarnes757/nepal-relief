@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :activities
 
   root 'welcome#index'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
     resource :requested_resource
   end
 
-  resources :donors
+  resources :donors, only: ['show']
 
 
   # The priority is based upon order of creation: first created -> highest priority.

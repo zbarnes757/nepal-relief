@@ -1,0 +1,18 @@
+<div class="row">
+
+	<div class="col-md-6">
+		<h3 class="beneficiary-header">Organization</h3>
+		<p><strong>Organization Name:</strong>	<%= @beneficiary.name %></p>
+		<p><strong>Description:</strong> <%= @beneficiary.description %></p>
+	</div>
+
+	<div class="col-md-6">
+		<h3 class="beneficiary-header">Contact Info</h3>
+		<p><strong>Contact Name:</strong> <%= @beneficiary.contact_name %></p>
+		<p><strong>Contact Number:</strong> <%= @beneficiary.contact_number %></p>
+		<p><strong>Address:</strong> <%= @beneficiary.address %></p>
+	</div>
+
+</div>
+
+<div id="beneficiary-map" data-lat="<%= @beneficiary.latitude %>" data-long="<%= @beneficiary.longitude %>"></div>

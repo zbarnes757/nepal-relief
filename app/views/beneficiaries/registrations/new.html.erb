@@ -7,21 +7,18 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :contact_name %><br />
+    <%= f.text_field :contact_name, class: "form-control", :placeholder => "i.e. Janet Johnson" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number, class: "form-control", :placeholder => "i.e. 4228094" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_email %><br />
     <%= f.email_field :email, class: "form-control", autofocus: true, :placeholder => "i.e. me@email.com" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, class: "form-control", autocomplete: "off",:placeholder => "password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", :placeholder => "password confirmation" %>
   </div>
 
   <div class="field">
@@ -34,21 +31,24 @@
     <%= f.text_field :address, class: "form-control", :placeholder => "i.e. Dhobichaur, Lazimpat (North Gate of the Royal Palace)" %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :contact_name %><br />
-    <%= f.text_field :contact_name, class: "form-control", :placeholder => "i.e. Janet Johnson" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact_number %><br />
-    <%= f.text_field :contact_number, class: "form-control", :placeholder => "i.e. 4228094" %>
-  </div>
-
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, class: "form-control", :placeholder => "Description...." %><br />
   </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, class: "form-control", autocomplete: "off",:placeholder => "password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", :placeholder => "password confirmation" %><br />
+  </div>
+
 
 
   <div class="actions">

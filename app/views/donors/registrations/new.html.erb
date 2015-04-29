@@ -7,13 +7,23 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label :contact_name %><br />
+    <%= f.text_field :name, class: "form-control", :placeholder => "i.e. Jack Grey" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "form-control", autofocus: true %>
+    <%= f.label :contact_email %><br />
+    <%= f.email_field :email, class: "form-control", autofocus: true, :placeholder => "i.e. me@email.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cotact_phone %><br />
+    <%= f.text_field :phone, class: "form-control",:placeholder => "4228094" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country,  class: "form-control", :placeholder => "China" %><br />
   </div>
 
   <div class="field">
@@ -21,30 +31,18 @@
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control", autocomplete: "off", :placeholder => "password" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", :placeholder => "password confirmation" %><br />
   </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country,  class: "form-control" %><br />
-  </div>
-
 
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>
-
 
 
 </div>

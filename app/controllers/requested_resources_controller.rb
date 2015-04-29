@@ -1,4 +1,9 @@
 class RequestedResourcesController < ApplicationController
+
+  def index
+    @requested_resource = RequestedResource.all
+  end
+
   def show
   end
 
@@ -45,3 +50,4 @@ class RequestedResourcesController < ApplicationController
 
 
 end
+

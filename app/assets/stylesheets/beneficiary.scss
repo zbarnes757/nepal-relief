@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search-bar {
+  text-align: center;
+  padding: 3em;
+  font-size: 1.5em;
+}
+
+.search-bar input {
+  text-align: center;
+}
+
+.glyphicon-search:before {
+  padding: 0.5em;
+}
+
+.table-head {
+  font-weight: bold;
+}
+
 #beneficiary-map {
 	width: 100%;
 	height: 25em;

@@ -54,9 +54,9 @@
       },
       "properties": {
         "title": beneficiary.id,
-        "marker-symbol": "library",
-        "marker-size": "medium",
-        "marker-color": "#d27591",
+        "marker-symbol": "hospital",
+        "marker-size": "large",
+        "marker-color": "#AA3939",
       }
     }
     return feature;

@@ -1,7 +1,7 @@
 (function() {
   var renderMap = function(geoData) {
     L.mapbox.accessToken = 'pk.eyJ1Ijoic2FsdHkiLCJhIjoiN2lJeWI2ayJ9.okjWPSPMRHaMiTPEynHDbQ';
-    var map = L.mapbox.map('map', 'mapbox.streets');
+    var map = L.mapbox.map('index-map', 'mapbox.streets');
     map.setView([28.729, 84.133], 7);
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -10,21 +10,25 @@
 
 
   var getAllBeneficiaries = function () {
-    var geoData = [{
-      "type": "FeatureCollection",
-      "features": [],
-    }];
 
-    $.ajax({
-      url: '/beneficiaries',
-    }).done(function (beneficiaryData) {
-      for (x in beneficiaryData ) {
-        geoData[0].features.push(createFeatureObject(beneficiaryData[x]));
-      }
-      renderMap(geoData);
-    }).fail(function () {
-      console.log("Something went wrong.");
-    });
+    var $mapContainer = $("#index-map");
+    if($mapContainer.length){
+      var geoData = [{
+        "type": "FeatureCollection",
+        "features": [],
+      }];
+
+      $.ajax({
+        url: '/beneficiaries',
+      }).done(function (beneficiaryData) {
+        for (x in beneficiaryData ) {
+          geoData[0].features.push(createFeatureObject(beneficiaryData[x]));
+        }
+        renderMap(geoData);
+      }).fail(function () {
+        console.log("Something went wrong.");
+      });
+    }
   }
 
   var createFeatureObject = function (beneficiary) {

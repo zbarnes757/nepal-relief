@@ -18,9 +18,9 @@
 	        "coordinates": [ longitude, latitude ]
 	      },
 	      "properties": {
-	        "marker-symbol": "library",
+	        "marker-symbol": "hospital",
 	        "marker-size": "medium",
-	        "marker-color": "#d27591",
+	        "marker-color": "#AA3939",
 	      }
 	    }],
 	    }];

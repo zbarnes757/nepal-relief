@@ -1,1 +1,24 @@
-resources.html.erb
+<h1>Listing Resources</h1>
+
+<table>
+  <tr>
+    <th>Requested</th>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Urgency</th>
+    <th>Fulfilled</th>
+    <th>Requested</th>
+  </tr>
+
+<% @requested_resource.each do |resource| %>
+  <tr>
+    <td><%= resource.created_at %></td>
+    <td><%= resource.name %></td>
+    <td><%= resource.quantity %></td>
+    <td><%= resource.urgency %></td>
+    <td><%= resource.fulfilled %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>

@@ -1,0 +1,17 @@
+<table>
+  <tbody>
+    <% @beneficiaries.each do |beneficiary| %>
+      <tr>
+        <td>
+          <%= beneficiary.name %>
+        </td>
+        <td>
+          <%= beneficiary.requested_resources.count %>
+        </td>
+        <td>
+          <%= link_to("Contact", beneficiary) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

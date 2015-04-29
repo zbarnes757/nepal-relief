@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+
 gem 'public_activity'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

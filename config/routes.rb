@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resource :requested_resource
   end
 
+  resources :donors
+
   devise_for :donors
 
   # The priority is based upon order of creation: first created -> highest priority.

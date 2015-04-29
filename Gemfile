@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+
+gem 'public_activity'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -45,7 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'dotenv-rails'
-  
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

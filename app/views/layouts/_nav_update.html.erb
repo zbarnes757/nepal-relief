@@ -11,6 +11,7 @@
         <li class="nav_li"><%= link_to "See The Need", root_path %></li>
         <li class="nav_li"><%= link_to 'News Feed', activities_path %></li>
         <li class="nav_li"><%= link_to "About", root_path %></li>
+        <li class="nav_li"><%= link_to "View Needs", beneficiaries_path %>
         <% if beneficiary_signed_in? %>
         <li class="nav_li">
           <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
@@ -21,10 +22,10 @@
         <ul class="nav navbar-nav navbar-right">
           <% unless donor_signed_in? || beneficiary_signed_in? %>
           <li class="dropdown">
-            <a href="#" id ="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown"> Sign in <b class="caret"></b></a>
+            <a href="#" id ="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown"> Log in <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a  href="/donors/sign_in">As a Donor</a></li>
-              <li><a id="organization_modal_trigger" href="/beneficiaries/sign_in">As a Beneficiary</a></li>
+              <li><a  href="/donors/sign_in">I Can Help</a></li>
+              <li><a id="organization_modal_trigger" href="/beneficiaries/sign_in">I Need Help</a></li>
             </ul>
           </li>
           <% end %>
@@ -41,10 +42,10 @@
 
           <% unless donor_signed_in? || beneficiary_signed_in? %>
           <li class="dropdown">
-            <a href="#" id ="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown"> Sign up <b class="caret"></b></a>
+            <a href="#" id ="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown"> Register <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/donors/sign_up">As a Donor</a></li>
-              <li><a href="/beneficiaries/sign_up">As a Beneficiary</a></li>
+              <li><a href="/donors/sign_up">Providing Help</a></li>
+              <li><a href="/beneficiaries/sign_up">Requesting Help</a></li>
             </ul>
           </li>
           <% end %>

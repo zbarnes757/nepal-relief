@@ -12,11 +12,12 @@ $(document).ready(function(){
     var quantity = currentRow.find(".resource-quantity");
     var urgency = currentRow.find(".resource-urgency");
     var fulfilled = currentRow.find(".resource-fulfilled");
+    var notes = currentRow.find(".resource-notes");
     var edit = currentRow.find(".resource-edit");
     var deleteButton = currentRow.find(".resource-delete").html();
 
 
-    [name, quantity, urgency].forEach(function(resourceInfo){
+    [name, quantity, urgency, notes].forEach(function(resourceInfo){
       var text = resourceInfo.text();
       resourceInfo.html("<input type='text'>")
       resourceInfo.children().first().val(text)
@@ -34,6 +35,7 @@ $(document).ready(function(){
       var updateName = name.children().first().val();
       var updateQuantity = quantity.children().first().val();
       var updateUrgency = urgency.children().first().val();
+      var updateNotes = notes.children().first().val();
 
 
       $.ajax({
@@ -41,7 +43,8 @@ $(document).ready(function(){
         type: 'put',
         data: {name: updateName,
                quantity: updateQuantity,
-               urgency: updateUrgency }
+               urgency: updateUrgency,
+               notes: updateNotes, }
       })
       .done(function(response){
         currentRow.css("background", "white")
@@ -49,6 +52,7 @@ $(document).ready(function(){
         name.html(response.name)
         quantity.html(response.quantity)
         urgency.html(response.urgency)
+        notes.html(response.notes)
         edit.html("<a href='#'>Edit</a>")
         currentRow.find(".resource-delete").html(deleteButton)
 

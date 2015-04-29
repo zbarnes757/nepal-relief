@@ -18,6 +18,8 @@
 
     map.scrollWheelZoom.disable();
 
+    myLayer.on('click', displayInfo);
+
   };
 
 
@@ -60,16 +62,40 @@
     return feature;
   };
   
-  var ajaxGeoData = function() {
-    // TODO: GET Api GeoData
-    return $.get();
-  };
+  // var ajaxGeoData = function() {
+  //   // TODO: GET Api GeoData
+  //   return $.get();
+  // };
 
   // .success Render MAP
 
-  var displayInfo = function() {
+  var displayInfo = function(event) {
+    event.layer.closePopup();
+    var id = event.layer.feature.properties.title;
+    var $info = $('#resource-info'); 
+
+    $.ajax({
+      url: 'beneficiaries/' + id,
+    }).done(function (beneficiaryData) {
+      $info.html(displayResourceInfo(beneficiaryData));
+    }).fail(function () {
+      console.log("Something went wrong.");
+    });
 
   };
+
+  var displayResourceInfo = function(beneficiaryData) {
+    var source   = $("#resource-template").html();
+    var template = Handlebars.compile(source);
+    var context = {
+                    id: beneficiaryData.id,
+                    description: beneficiaryData.description, 
+                    name: beneficiaryData.name,
+                    requested_resources: beneficiaryData.requested_resources,
+                  };
+    var html    = template(context);
+    return html
+  }
 
 
   $(function() {

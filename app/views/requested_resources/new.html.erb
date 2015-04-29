@@ -12,18 +12,22 @@
           <th>Item Quantity</th>
           <th>Urgency</th>
           <th>fulfilled</th>
+          <th>Notes</th>
         </tr>
-        <% current_beneficiary.requested_resources.each do |resource| %>
+        <% if current_beneficiary %>
+        <% current_beneficiary.requested_resources.each do |resource|  %>
           <tr id="<%= resource.id %>">
             <td class="resource-name"><%= resource.name %></td>
             <td class="resource-quantity"><%= resource.quantity %></td>
             <td class="resource-urgency"><%= resource.urgency %></td>
             <td  class="resource-fulfilled"><%= resource.fulfilled %></td>
+            <td  class="resource-notes"><%= resource.notes if resource.notes %></td>
             <td class="resource-edit"><a href="#">Edit</a></td>
             <td class="resource-delete"><%= link_to "Delete", {action: :destroy, controller: :requested_resources, id: resource.id }, method: :delete %></td>
 
           </tr>
 
+        <% end %>
         <% end %>
         <tr>
           <%= form_for @resource, url: { action: "create" } do |f| %>
@@ -31,6 +35,7 @@
             <td><%= f.text_field :quantity, :placeholder => "Quantity" %></td>
             <td><%= f.text_field :urgency, :placeholder => "Urgency" %></td>
             <td></td>
+            <td><%= f.text_field :notes, :placeholder => "Notes" %></td>
             <td></td>
             <td><%= f.submit  :+, :class => "btn" %></td>
           <% end %>

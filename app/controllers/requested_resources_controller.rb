@@ -23,7 +23,8 @@ class RequestedResourcesController < ApplicationController
     resource.update_attributes(
       name: params[:name],
       quantity: params[:quantity],
-      urgency: params[:urgency]
+      urgency: params[:urgency],
+      notes: params[:notes]
 
       )
 
@@ -45,7 +46,7 @@ class RequestedResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:requested_resource).permit(:name, :quantity, :urgency)
+    params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes)
   end
 
 

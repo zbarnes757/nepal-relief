@@ -14,7 +14,7 @@
         <li class="nav_li"><%= link_to "View Needs", beneficiaries_path %>
         <% if beneficiary_signed_in? %>
         <li class="nav_li">
-          <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
+          <%= link_to "Manage my Needs", new_beneficiary_requested_resource_path(current_beneficiary) %>
         </li>
         <% end %>
       </ul>

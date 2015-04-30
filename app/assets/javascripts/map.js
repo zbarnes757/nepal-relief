@@ -7,7 +7,7 @@
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
     myLayer.setGeoJSON(geoData);
-    
+
     // L.mapbox.featureLayer().addTo(map).setGeoJSON(geoData).on('ready', function(e) {
     //     var clusterGroup = new L.MarkerClusterGroup();
     //     e.target.eachLayer(function(layer) {
@@ -61,19 +61,12 @@
     }
     return feature;
   };
-  
-  // var ajaxGeoData = function() {
-  //   // TODO: GET Api GeoData
-  //   return $.get();
-  // };
-
-  // .success Render MAP
 
   var displayInfo = function(event) {
     event.layer.closePopup();
     var id = event.layer.feature.properties.title;
-    var $info = $('#resource-info'); 
-
+    var $info = $('#resource-info');
+    $('#click-pin-display').hide();
     $.ajax({
       url: 'beneficiaries/' + id,
     }).done(function (beneficiaryData) {
@@ -89,13 +82,13 @@
     var template = Handlebars.compile(source);
     var context = {
                     id: beneficiaryData.id,
-                    description: beneficiaryData.description, 
+                    description: beneficiaryData.description,
                     name: beneficiaryData.name,
                     requested_resources: beneficiaryData.requested_resources,
                   };
     var html    = template(context);
     return html
-  }
+  };
 
 
   $(function() {

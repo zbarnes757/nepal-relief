@@ -1,0 +1,33 @@
+<div id="resource-info">
+
+</div>
+<script id="resource-template" type="text/x-handlebars-template">
+  <h3><a href="/beneficiaries/{{id}}">{{ name }}</a></h3>
+  <p>{{ description }}</p>
+  {{#if requested_resources }}
+    <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Urgency</th>
+        <th>Fulfilled</th>
+        <th>Notes</th>
+      </tr>
+
+    {{#each requested_resources }}
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ quantity }}</td>
+        <td>{{ urgency }}</td>
+        <td>{{ fulfilled }}</td>
+        <td style="table-layout:fixed; width:10px; overflow:hidden; white-space: nowrap">{{ notes }}</td>
+      </tr>
+    {{/each}}
+    </table>
+    {{else}}
+      <p>They have no open requests.</p>
+    {{/if}}
+
+  </div>
+</script>

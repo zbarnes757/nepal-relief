@@ -15,6 +15,7 @@ class Beneficiaries::RegistrationsController < Devise::RegistrationsController
     body = JSON.parse(response.body)
     coordinates = body["results"][0]["geometry"]["location"]
     resource.update_attributes(longitude: coordinates["lng"], latitude: coordinates["lat"], password: sign_up_params["password"])
+    Keen.publish(:sign_ups, { type: 'beneficiary'})
   end
 
   # GET /resource/edit

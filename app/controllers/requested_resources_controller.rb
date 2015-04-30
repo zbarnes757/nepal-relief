@@ -1,4 +1,9 @@
 class RequestedResourcesController < ApplicationController
+
+  def index
+    @requested_resource = RequestedResource.all
+  end
+
   def show
   end
 
@@ -18,7 +23,8 @@ class RequestedResourcesController < ApplicationController
     resource.update_attributes(
       name: params[:name],
       quantity: params[:quantity],
-      urgency: params[:urgency]
+      urgency: params[:urgency],
+      notes: params[:notes]
 
       )
 
@@ -30,6 +36,7 @@ class RequestedResourcesController < ApplicationController
     resource = RequestedResource.new(resource_params)
     if resource.save
       current_beneficiary.requested_resources << resource
+      Keen.publish(:resource_request, {fulfilled: false})
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     else
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
@@ -40,8 +47,9 @@ class RequestedResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:requested_resource).permit(:name, :quantity, :urgency)
+    params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes)
   end
 
 
 end
+

@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
 
+
+  resources :activities
+
   root 'welcome#index'
 
 
   devise_for :beneficiaries, controllers: { registrations: 'beneficiaries/registrations'}
+  devise_for :donors, controllers: { registrations: 'donors/registrations'}
 
-  resources :beneficiaries do
+  resources :beneficiaries, only: ['index','show'] do
     resource :requested_resource
   end
 
-  devise_for :donors
+  resources :donors, only: ['show']
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,4 +9,16 @@ class Beneficiary < ActiveRecord::Base
   validates :name, :address, :contact_name, :contact_number, presence: true
   validates :name, uniqueness: true
   has_many :requested_resources
+
+  def count_donors
+    # self.requested_resources[0].claimed_resources[0].donor
+    num_of_donors = 0
+    self.requested_resources.each do |resource|
+      resource.claimed_resources.each do |claimed|
+        num_of_donors += 1 if claimed.donor
+      end
+    end
+    num_of_donors
+  end
+
 end

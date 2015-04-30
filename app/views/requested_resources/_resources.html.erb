@@ -11,18 +11,18 @@
         <th>Item</th>
         <th>Quantity</th>
         <th>Urgency</th>
-        <th>Fulfilled</th>
         <th>Notes</th>
       </tr>
 
     {{#each requested_resources }}
-      <tr>
-        <td>{{ name }}</td>
-        <td>{{ quantity }}</td>
-        <td>{{ urgency }}</td>
-        <td>{{ fulfilled }}</td>
-        <td style="table-layout:fixed; width:10px; overflow:hidden; white-space: nowrap">{{ notes }}</td>
-      </tr>
+      {{#unless fulfilled }}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ quantity }}</td>
+          <td>{{ urgency }}</td>
+          <td>{{ notes }}</td>
+        </tr>
+      {{/unless}}
     {{/each}}
     </table>
     {{else}}

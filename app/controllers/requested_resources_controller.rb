@@ -9,6 +9,8 @@ class RequestedResourcesController < ApplicationController
 
   def new
     @resource = RequestedResource.new()
+    beneficiary = Beneficiary.find(params[:beneficiary_id])
+    redirect_to root_path unless current_beneficiary == beneficiary
   end
 
   def destroy

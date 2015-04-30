@@ -1,7 +1,6 @@
 
 <div class="container">
   <div class="row">
-    <!-- <div class="col-lg-2 col-md-2"></div> -->
     <div class="col-lg-12 col-md-12">
       <h1>Your Current Needs</h1>
 
@@ -11,7 +10,7 @@
           <th>Item Name</th>
           <th>Item Quantity</th>
           <th>Urgency</th>
-          <th>fulfilled</th>
+          <th>Fulfilled</th>
           <th>Notes</th>
         </tr>
         <% if current_beneficiary %>
@@ -20,7 +19,7 @@
             <td class="resource-name"><%= resource.name %></td>
             <td class="resource-quantity"><%= resource.quantity %></td>
             <td class="resource-urgency"><%= resource.urgency %></td>
-            <td  class="resource-fulfilled"><%= resource.fulfilled %></td>
+            <td  class="resource-fulfilled"><%= resource.fulfilled ? 'Yes' : 'No' %></td>
             <td  class="resource-notes"><%= resource.notes if resource.notes %></td>
             <td class="resource-edit"><a href="#">Edit</a></td>
             <td class="resource-delete"><%= link_to "Delete", {action: :destroy, controller: :requested_resources, id: resource.id }, method: :delete %></td>
@@ -32,8 +31,10 @@
         <tr>
           <%= form_for @resource, url: { action: "create" } do |f| %>
             <td><%= f.text_field :name, :placeholder => "Item Name" %></td>
-            <td><%= f.text_field :quantity, :placeholder => "Quantity" %></td>
-            <td><%= f.text_field :urgency, :placeholder => "Urgency" %></td>
+            <td><%= f.number_field :quantity, :placeholder => "Quantity" %></td>
+            <td>
+              <%= f.select :urgency, [["Low", "Low"], ["Medium", "Medium"],["High","High"]] %>
+            </td>
             <td></td>
             <td><%= f.text_field :notes, :placeholder => "Notes" %></td>
             <td></td>

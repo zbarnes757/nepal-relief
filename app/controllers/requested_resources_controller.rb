@@ -36,6 +36,7 @@ class RequestedResourcesController < ApplicationController
     resource = RequestedResource.new(resource_params)
     if resource.save
       current_beneficiary.requested_resources << resource
+      Keen.publish(:resource_request, {fulfilled: false})
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)
     else
       redirect_to new_beneficiary_requested_resource_path(current_beneficiary)

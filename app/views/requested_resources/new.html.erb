@@ -19,7 +19,7 @@
             <td class="resource-name"><%= resource.name %></td>
             <td class="resource-quantity"><%= resource.quantity %></td>
             <td class="resource-urgency"><%= resource.urgency %></td>
-            <td  class="resource-fulfilled"><%= resource.fulfilled %></td>
+            <td  class="resource-fulfilled"><%= resource.fulfilled ? 'Yes' : 'No' %></td>
             <td  class="resource-notes"><%= resource.notes if resource.notes %></td>
             <td class="resource-edit"><a href="#">Edit</a></td>
             <td class="resource-delete"><%= link_to "Delete", {action: :destroy, controller: :requested_resources, id: resource.id }, method: :delete %></td>

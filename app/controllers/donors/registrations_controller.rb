@@ -1,4 +1,4 @@
-class Beneficiaries::RegistrationsController < Devise::RegistrationsController
+class Donors::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -10,12 +10,7 @@ class Beneficiaries::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    address = resource.address.gsub(" ", "+")
-    response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{ENV['GEOCODE_KEY']}")
-    body = JSON.parse(response.body)
-    coordinates = body["results"][0]["geometry"]["location"]
-    resource.update_attributes(longitude: coordinates["lng"], latitude: coordinates["lat"], password: sign_up_params["password"])
-    Keen.publish(:sign_ups, { type: 'beneficiary'})
+    Keen.publish(:sign_ups, { type: 'donor'})
   end
 
   # GET /resource/edit

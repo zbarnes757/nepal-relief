@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 
   devise_for :beneficiaries, controllers: { registrations: 'beneficiaries/registrations'}
-  devise_for :donors
+  devise_for :donors, controllers: { registrations: 'donors/registrations'}
 
   resources :beneficiaries, only: ['index','show'] do
     resource :requested_resource

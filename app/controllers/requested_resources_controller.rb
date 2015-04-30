@@ -22,6 +22,7 @@ class RequestedResourcesController < ApplicationController
     resource = RequestedResource.find(params[:beneficiary_id])
     if params[:fulfilled] == 'Yes'
       fulfilled = true
+      Keen.publish(:resource_request, {fulfilled: true})
     else
       fulfilled = false
     end

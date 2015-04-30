@@ -20,12 +20,17 @@ class RequestedResourcesController < ApplicationController
   def update
 
     resource = RequestedResource.find(params[:beneficiary_id])
+    if params[:fulfilled] == 'Yes'
+      fulfilled = true
+    else
+      fulfilled = false
+    end
     resource.update_attributes(
       name: params[:name],
       quantity: params[:quantity],
       urgency: params[:urgency],
-      notes: params[:notes]
-
+      notes: params[:notes],
+      fulfilled: fulfilled
       )
 
     render json: resource
@@ -47,7 +52,7 @@ class RequestedResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes)
+    params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes, :fulfilled)
   end
 
 

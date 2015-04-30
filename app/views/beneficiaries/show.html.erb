@@ -4,6 +4,9 @@
 		<h3 class="beneficiary-header">Organization</h3>
 		<p><strong>Organization Name:</strong>	<%= @beneficiary.name %></p>
 		<p><strong>Description:</strong> <%= @beneficiary.description %></p>
+		<% if @beneficiary == current_beneficiary %>
+			<%= link_to "Change Password", edit_beneficiary_registration_path(@beneficiary), class: "btn btn-primary" %>
+		<% end %>
 	</div>
 
 	<div class="col-md-6">

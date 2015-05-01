@@ -4,19 +4,14 @@
 
     var map = L.mapbox.map('index-map')
         .setView([27.73, 86.369], 8)
-        .addLayer(L.mapbox.tileLayer('mapbox.dark'));
+        .addLayer(L.mapbox.tileLayer('mapbox.emerald'));
 
-    var myLayer = L.mapbox.featureLayer().addTo(map);
-    myLayer.setGeoJSON(geoData);
-
-    // L.mapbox.featureLayer(geoData).on('load', function(e) {
-    //     var clusterGroup = new L.MarkerClusterGroup();
-    //     console.log(e);
-    //     e.target.eachLayer(function(layer) {
-    //         clusterGroup.addLayer(layer);
-    //     });
-    //     map.addLayer(clusterGroup);
-    // });
+    var myLayer = L.mapbox.featureLayer(geoData);
+    var clusterGroup = new L.MarkerClusterGroup();
+    myLayer.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+    });
+    map.addLayer(clusterGroup);
 
     map.scrollWheelZoom.disable();
 

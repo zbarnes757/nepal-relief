@@ -7,7 +7,7 @@
 			var latitude = $mapContainer.data('lat');
 
 	    L.mapbox.accessToken = 'pk.eyJ1Ijoic2FsdHkiLCJhIjoiN2lJeWI2ayJ9.okjWPSPMRHaMiTPEynHDbQ';
-			beneficiaryMap = L.mapbox.map('beneficiary-map', 'mapbox.streets').setView([ latitude, longitude ], 15);
+			beneficiaryMap = L.mapbox.map('beneficiary-map', 'mapbox.emerald').setView([ latitude, longitude ], 15);
 
 			var geoData = [{
 	      "type": "FeatureCollection",

@@ -15,10 +15,12 @@
   height: 15em;
 }
 
-footer {
-  height: 14em;
+.rounded {
+	border-radius: 50%;
   background-color: #3b3b3b;
-  margin-top: 2em;
-  color: white;
+}
+
+.footer {
+	margin-bottom: 3em;
 }
 

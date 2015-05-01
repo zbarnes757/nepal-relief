@@ -9,12 +9,12 @@
     <div id ="navbar-padding-override" class="collapse navbar-collapse">
       <ul id ="nav-items" class="nav navbar-nav">
         <li class="nav_li"><%= link_to "See The Need", root_path %></li>
+        <li class="nav_li"><a href="#about">About</a></li>
         <li class="nav_li"><%= link_to 'News Feed', activities_path %></li>
-        <li class="nav_li"><%= link_to "About", root_path %></li>
         <li class="nav_li"><%= link_to "View Needs", beneficiaries_path %>
         <% if beneficiary_signed_in? %>
         <li class="nav_li">
-          <%= link_to "Requested Resources", new_beneficiary_requested_resource_path(current_beneficiary) %>
+          <%= link_to "Manage my Needs", new_beneficiary_requested_resource_path(current_beneficiary) %>
         </li>
         <% end %>
       </ul>

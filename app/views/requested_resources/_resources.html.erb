@@ -1,6 +1,13 @@
-<div id="resource-info">
+<section class="requested-resource-container">
+  <center>
+    <h1>In need of resources</h1>
+    <small id='click-pin-display'>( click a pin to display )</small>
+  </center>
+  <div id="resource-info">
 
-</div>
+  </div>
+</section>
+
 <script id="resource-template" type="text/x-handlebars-template">
   <h3><a href="/beneficiaries/{{id}}">{{ name }}</a></h3>
   <p>{{ description }}</p>
@@ -11,18 +18,18 @@
         <th>Item</th>
         <th>Quantity</th>
         <th>Urgency</th>
-        <th>Fulfilled</th>
         <th>Notes</th>
       </tr>
 
     {{#each requested_resources }}
-      <tr>
-        <td>{{ name }}</td>
-        <td>{{ quantity }}</td>
-        <td>{{ urgency }}</td>
-        <td>{{ fulfilled }}</td>
-        <td style="table-layout:fixed; width:10px; overflow:hidden; white-space: nowrap">{{ notes }}</td>
-      </tr>
+      {{#unless fulfilled }}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ quantity }}</td>
+          <td>{{ urgency }}</td>
+          <td>{{ notes }}</td>
+        </tr>
+      {{/unless}}
     {{/each}}
     </table>
     {{else}}

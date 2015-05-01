@@ -4,6 +4,9 @@
 		<h3 class="beneficiary-header">Organization</h3>
 		<p><strong>Organization Name:</strong>	<%= @beneficiary.name %></p>
 		<p><strong>Description:</strong> <%= @beneficiary.description %></p>
+		<% if @beneficiary == current_beneficiary %>
+			<%= link_to "Change Password", edit_beneficiary_registration_path(@beneficiary), class: "btn btn-primary" %>
+		<% end %>
 	</div>
 
 	<div class="col-md-6">
@@ -17,3 +20,23 @@
 </div>
 
 <div id="beneficiary-map" data-lat="<%= @beneficiary.latitude %>" data-long="<%= @beneficiary.longitude %>"></div>
+<% unless @beneficiary.requested_resources.empty? %>
+<h3 style="text-align: center;">Current Needs</h3>
+	<table class="table">
+	  <tr>
+	    <th>Item Name</th>
+	    <th>Item Quantity</th>
+	    <th>Urgency</th>
+	    <th>Notes</th>
+	  </tr>
+	  <% @beneficiary.requested_resources.each do |resource|  %>
+	  	<% next if resource.fulfilled %>
+	    <tr id="<%= resource.id %>">
+	      <td class="resource-name"><%= resource.name %></td>
+	      <td class="resource-quantity"><%= resource.quantity %></td>
+	      <td class="resource-urgency"><%= resource.urgency %></td>
+	      <td  class="resource-notes"><%= resource.notes if resource.notes %></td>
+	    </tr>
+	  <% end %>
+	</table>
+<% end %>

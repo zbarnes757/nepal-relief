@@ -1,8 +1,28 @@
 <div id="banner">
-<center><h2 id="welcome">Welcome to See The Need</h2></center>
-<h4 id="description">Click on a pin on the map to view what resources have been requested at the chosen relief center.</h4>
+  <center><h2 id="welcome">Welcome to See The Need</h2></center>
+  <h4 id="description">Click on a pin on the map to view what resources have been requested at the chosen relief center.</h4>
 </div>
 
 <%= render 'map' %>
+
+
 <%= render "requested_resources/resources" %>
 
+<div class="row footer">
+  <div class="col-md-6">
+  <section id="about" class="about-container">
+    <center>
+      <h1>About</h1>
+    </center>
+    There is a great deal of need in the world. Wouldn't it be great if there was a way to see where the need was and how you can help? See the Need is an app based on the idea that it should be easy for looking for aid to tell the world what it is they need and those with the ability to help should be able to find them. Our goal is to create a global marketplace for helping others. Go ahead. Ask for help or find a way to help someone else. How will you affect the world?
+  </section>
+  </div>
+  <div class="col-md-6">
+    <center>
+      <h1>Want to contribute?</h1>
+      <a href="https://github.com/zbarnes757/nepal-relief/" >
+      <img style='max-hight:10em;max-width:10em;' src="http://icons.iconarchive.com/icons/danleech/simple/512/github-icon.png" class="rounded">
+    </a>
+    </center>
+  </div>
+</div>

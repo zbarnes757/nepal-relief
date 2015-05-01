@@ -23,7 +23,7 @@
           <td>Contact Information</td>
         </tr>
         <% @beneficiaries.each do |beneficiary| %>
-          <tr>
+          <tr class="beni-row">
             <td class="beni-name"><%= beneficiary.name %></td>
             <td><%= beneficiary.requested_resources.count %></td>
             <td><%= beneficiary.count_donors %> </td>
@@ -33,6 +33,7 @@
 
     </tbody>
   </table>
+    <div class="no-results alert alert-danger">No Search Results Found</div>
   </div>
 
   </div>

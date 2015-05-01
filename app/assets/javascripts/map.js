@@ -2,14 +2,16 @@
   var renderMap = function(geoData) {
     L.mapbox.accessToken = 'pk.eyJ1Ijoic2FsdHkiLCJhIjoiN2lJeWI2ayJ9.okjWPSPMRHaMiTPEynHDbQ';
 
-    var map = L.mapbox.map('index-map', 'mapbox.streets')
-        .setView([27.73, 86.369], 8);
+    var map = L.mapbox.map('index-map')
+        .setView([27.73, 86.369], 8)
+        .addLayer(L.mapbox.tileLayer('mapbox.dark'));
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
     myLayer.setGeoJSON(geoData);
 
-    // L.mapbox.featureLayer().addTo(map).setGeoJSON(geoData).on('ready', function(e) {
+    // L.mapbox.featureLayer(geoData).on('load', function(e) {
     //     var clusterGroup = new L.MarkerClusterGroup();
+    //     console.log(e);
     //     e.target.eachLayer(function(layer) {
     //         clusterGroup.addLayer(layer);
     //     });

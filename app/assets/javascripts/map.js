@@ -2,19 +2,16 @@
   var renderMap = function(geoData) {
     L.mapbox.accessToken = 'pk.eyJ1Ijoic2FsdHkiLCJhIjoiN2lJeWI2ayJ9.okjWPSPMRHaMiTPEynHDbQ';
 
-    var map = L.mapbox.map('index-map', 'mapbox.streets')
-        .setView([27.73, 86.369], 8);
+    var map = L.mapbox.map('index-map')
+        .setView([27.73, 86.369], 8)
+        .addLayer(L.mapbox.tileLayer('mapbox.emerald'));
 
-    var myLayer = L.mapbox.featureLayer().addTo(map);
-    myLayer.setGeoJSON(geoData);
-
-    // L.mapbox.featureLayer().addTo(map).setGeoJSON(geoData).on('ready', function(e) {
-    //     var clusterGroup = new L.MarkerClusterGroup();
-    //     e.target.eachLayer(function(layer) {
-    //         clusterGroup.addLayer(layer);
-    //     });
-    //     map.addLayer(clusterGroup);
-    // });
+    var myLayer = L.mapbox.featureLayer(geoData);
+    var clusterGroup = new L.MarkerClusterGroup();
+    myLayer.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+    });
+    map.addLayer(clusterGroup);
 
     map.scrollWheelZoom.disable();
 

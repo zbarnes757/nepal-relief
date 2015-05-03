@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :activities
 
   root 'welcome#index'
-
+  get 'how_it_works' => 'how_it_works#index'
 
   devise_for :beneficiaries, controllers: { registrations: 'beneficiaries/registrations'}
   devise_for :donors, controllers: { registrations: 'donors/registrations'}

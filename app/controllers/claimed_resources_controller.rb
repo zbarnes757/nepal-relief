@@ -6,6 +6,9 @@ class ClaimedResourcesController < ApplicationController
     if claimed_resource.save!
       current_donor.claimed_resources << claimed_resource
       requested_resource.claimed_resources << claimed_resource
+      if requested_resource.fulfilled?
+        requested_resource.update_attributes(fulfilled: true)
+      end
     end
     redirect_to beneficiary_requested_resource_path(requested_resource.beneficiary, requested_resource)
   end

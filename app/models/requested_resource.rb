@@ -22,4 +22,9 @@ class RequestedResource < ActiveRecord::Base
   def quantity_claimed
     self.quantity - self.quantity_remaining
   end
+
+  def fulfilled?
+    quantity_claimed >= quantity
+  end
+
 end

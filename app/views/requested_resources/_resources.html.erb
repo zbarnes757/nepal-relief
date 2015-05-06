@@ -29,7 +29,9 @@
           <td>{{ quantity }}</td>
           <td>{{ urgency }}</td>
           <td>{{ notes }}</td>
-          <td class=" btn btn-primary"><a href="/beneficiaries/{{beneficiary_id}}/requested_resources/{{id}}">Claim</a></td>
+          <td>
+            <a href="/beneficiaries/{{beneficiary_id}}/requested_resources/{{id}}"><button class=" btn btn-primary">Claim</button></a>
+          </td>
         </tr>
       {{/unless}}
     {{/each}}

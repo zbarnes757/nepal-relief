@@ -17,6 +17,8 @@
     </tr>
 </table>
 
+<% if current_donor %>
+
 <h4>How many <%= @requested_resource.name %> would you like to claim?</h4>
 
 <%= form_for [@requested_resource.beneficiary, @requested_resource, @requested_resource.claimed_resources.build] do |f|%>
@@ -24,4 +26,10 @@
   <%= f.text_field :quantity %>
 
   <%= f.submit "Submit"%>
+<% end %>
+
+<% else %>
+
+  <h4>You must be <a href="/donors/sign_in">signed in</a> in order to claim resources</h4>
+
 <% end %>

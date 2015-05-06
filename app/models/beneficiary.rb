@@ -21,6 +21,12 @@ class Beneficiary < ActiveRecord::Base
     list_of_donors.uniq.length
   end
 
-
+  def all_fulfilled?
+    if self.requested_resources.find_by(fulfilled: false)
+      return false
+    else
+      return true
+    end
+  end
 
 end

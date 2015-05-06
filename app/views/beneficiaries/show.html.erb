@@ -20,7 +20,9 @@
 </div>
 
 <div id="beneficiary-map" data-lat="<%= @beneficiary.latitude %>" data-long="<%= @beneficiary.longitude %>"></div>
-<% unless @beneficiary.requested_resources.empty? %>
+<% if @beneficiary.all_fulfilled? || @beneficiary.requested_resources.empty? %>
+	<h4>They have no open requests.</h4>
+<% else %>
 <h3 style="text-align: center;">Current Needs</h3>
 	<table class="table">
 	  <tr>

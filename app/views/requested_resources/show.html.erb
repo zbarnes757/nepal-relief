@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <td><%= @requested_resource.name %></td>
-      <td><%= @requested_resource.quantity %></td>
+      <td><%= @requested_resource.quantity_remaining %></td>
       <td><%= @requested_resource.urgency %></td>
       <td><%= @requested_resource.notes %></td>
     </tr>
@@ -17,9 +17,9 @@
 
 <h4>How many <%= @requested_resource.name %> would you like to claim?</h4>
 
-<%= form_for [@requested_resource.beneficiary, @requested_resource] do |f|%>
+<%= form_for [@requested_resource.beneficiary, @requested_resource, @requested_resource.claimed_resources.build] do |f|%>
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
 
-  <%= f.submit %>
+  <%= f.submit "Submit"%>
 <% end %>

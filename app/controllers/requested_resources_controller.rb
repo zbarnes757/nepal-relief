@@ -58,7 +58,5 @@ class RequestedResourcesController < ApplicationController
   def resource_params
     params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes, :fulfilled)
   end
-
-
 end
 

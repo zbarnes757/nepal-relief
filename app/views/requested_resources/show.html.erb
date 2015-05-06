@@ -14,3 +14,12 @@
       <td><%= @requested_resource.notes %></td>
     </tr>
 </table>
+
+<h4>How many <%= @requested_resource.name %> would you like to claim?</h4>
+
+<%= form_for [@requested_resource.beneficiary, @requested_resource] do |f|%>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+
+  <%= f.submit %>
+<% end %>

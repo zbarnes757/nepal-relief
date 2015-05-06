@@ -5,6 +5,7 @@ class RequestedResourcesController < ApplicationController
   end
 
   def show
+    @requested_resource = RequestedResource.find(params[:id])
   end
 
   def new

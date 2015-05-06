@@ -18,4 +18,8 @@ class RequestedResource < ActiveRecord::Base
     amount_left
      # = self.quantity - self.claimed_resources[0].quantity
   end
+
+  def quantity_claimed
+    self.quantity - self.quantity_remaining
+  end
 end

@@ -41,9 +41,17 @@
 	      <td class="resource-quantity-claimed"><%= resource.quantity_claimed %></td>
 	      <td class="resource-urgency"><%= resource.urgency %></td>
 	      <td class="resource-notes"><%= resource.notes if resource.notes %></td>
+	      <% if current_donor %>
 	      <td>
 	        <a href="/beneficiaries/<%= resource.beneficiary_id %>/requested_resources/<%=resource.id %>"><button class="btn btn-primary">Claim</button></a>
 	      </td>
+	      <% else %>
+	      <td>
+	      	<a href="/donors/sign_in">
+	      		<button class="btn btn-info">Login To Claim</button>
+	      	</a>
+	      </td>
+	      <% end %>
 	    </tr>
 	  <% end %>
 	</table>

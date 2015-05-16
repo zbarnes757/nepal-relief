@@ -25,7 +25,7 @@
         <% @beneficiaries.each do |beneficiary| %>
           <tr class="beni-row">
             <td class="beni-name"><%= beneficiary.name %></td>
-            <td><%= beneficiary.requested_resources.count %></td>
+            <td><%= beneficiary.requested_resources.where(fulfilled: false).count %></td>
             <td><%= beneficiary.count_donors %> </td>
             <td> <%= link_to("Contact", beneficiary) %> </td>
           </tr>

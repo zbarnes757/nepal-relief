@@ -20,22 +20,38 @@
 </div>
 
 <div id="beneficiary-map" data-lat="<%= @beneficiary.latitude %>" data-long="<%= @beneficiary.longitude %>"></div>
-<% unless @beneficiary.requested_resources.empty? %>
+<% if @beneficiary.all_fulfilled? || @beneficiary.requested_resources.empty? %>
+	<h4>They have no open requests.</h4>
+<% else %>
 <h3 style="text-align: center;">Current Needs</h3>
 	<table class="table">
 	  <tr>
 	    <th>Item Name</th>
-	    <th>Item Quantity</th>
+	    <th>Quantity Needed</th>
+	    <th>Quantity Claimed</th>
 	    <th>Urgency</th>
 	    <th>Notes</th>
+	    <th>&nbsp;</th>
 	  </tr>
 	  <% @beneficiary.requested_resources.each do |resource|  %>
 	  	<% next if resource.fulfilled %>
 	    <tr id="<%= resource.id %>">
 	      <td class="resource-name"><%= resource.name %></td>
 	      <td class="resource-quantity"><%= resource.quantity %></td>
+	      <td class="resource-quantity-claimed"><%= resource.quantity_claimed %></td>
 	      <td class="resource-urgency"><%= resource.urgency %></td>
-	      <td  class="resource-notes"><%= resource.notes if resource.notes %></td>
+	      <td class="resource-notes"><%= resource.notes if resource.notes %></td>
+	      <% if current_donor %>
+	      <td>
+	        <a href="/beneficiaries/<%= resource.beneficiary_id %>/requested_resources/<%=resource.id %>"><button class="btn btn-primary">Claim</button></a>
+	      </td>
+	      <% else %>
+	      <td>
+	      	<a href="/donors/sign_in">
+	      		<button class="btn btn-info">Login To Claim</button>
+	      	</a>
+	      </td>
+	      <% end %>
 	    </tr>
 	  <% end %>
 	</table>

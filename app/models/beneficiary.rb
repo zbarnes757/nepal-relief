@@ -12,13 +12,21 @@ class Beneficiary < ActiveRecord::Base
 
   def count_donors
     # self.requested_resources[0].claimed_resources[0].donor
-    num_of_donors = 0
+    list_of_donors = [];
     self.requested_resources.each do |resource|
       resource.claimed_resources.each do |claimed|
-        num_of_donors += 1 if claimed.donor
+        list_of_donors << claimed.donor.id
       end
     end
-    num_of_donors
+    list_of_donors.uniq.length
+  end
+
+  def all_fulfilled?
+    if self.requested_resources.find_by(fulfilled: false)
+      return false
+    else
+      return true
+    end
   end
 
 end

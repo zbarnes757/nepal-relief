@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Item</th>
+      <th>Quantity Needed</th>
+      <th>Quantity Claimed</th>
+      <th>Urgency</th>
+      <th>Notes</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr>
+      <td><%= @requested_resource.name %></td>
+      <td><%= @requested_resource.quantity %></td>
+      <td><%= @requested_resource.quantity_claimed %></td>
+      <td><%= @requested_resource.urgency %></td>
+      <td><%= @requested_resource.notes %></td>
+    </tr>
+</table>
+
+<% if current_donor %>
+
+<h4>How many <%= @requested_resource.name %> would you like to claim?</h4>
+
+<%= form_for [@requested_resource.beneficiary, @requested_resource, @requested_resource.claimed_resources.build] do |f|%>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+
+  <%= f.submit "Submit"%>
+<% end %>
+
+<% else %>
+
+  <h4>You must be <a href="/donors/sign_in">signed in</a> in order to claim resources</h4>
+
+<% end %>

@@ -5,6 +5,7 @@ class RequestedResourcesController < ApplicationController
   end
 
   def show
+    @requested_resource = RequestedResource.find(params[:id])
   end
 
   def new
@@ -57,7 +58,5 @@ class RequestedResourcesController < ApplicationController
   def resource_params
     params.require(:requested_resource).permit(:name, :quantity, :urgency, :notes, :fulfilled)
   end
-
-
 end
 

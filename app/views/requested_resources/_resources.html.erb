@@ -19,6 +19,7 @@
         <th>Quantity</th>
         <th>Urgency</th>
         <th>Notes</th>
+        <th>&nbsp;</th>
       </tr>
 
     {{#each requested_resources }}
@@ -28,6 +29,9 @@
           <td>{{ quantity }}</td>
           <td>{{ urgency }}</td>
           <td>{{ notes }}</td>
+          <td>
+            {{!-- {{<a href="/beneficiaries/{{beneficiary_id}}/requested_resources/{{id}}"><button class=" btn btn-primary">Claim</button></a>}} --}}
+          </td>
         </tr>
       {{/unless}}
     {{/each}}
